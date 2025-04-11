@@ -146,7 +146,11 @@
       const identificacao = hashes[hash];
 
       if (identificacao) {
-        resultado.innerHTML = `✅ DTB identificado: <strong>${identificacao}</strong>`;
+        if (identificacao.includes("Clone") || identificacao.includes("K36S")) {
+          resultado.innerHTML = `⚠️ DTB identificada: <strong>${identificacao}</strong><br>Este modelo é um clone e não é compatível com sistemas oficiais.`;
+        } else {
+          resultado.innerHTML = `✅ DTB identificada: <strong>${identificacao}</strong>`;
+        }
       } else {
         resultado.innerHTML = `❌ DTB desconhecido. Entre em contato com o suporte da Retromax para adicionar essa tela.`;
       }

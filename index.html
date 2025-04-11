@@ -6,57 +6,86 @@
   <title>DTB Manual - Retromax Games</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #101820;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #0f1117;
       color: #ffffff;
-      padding: 20px;
+      padding: 16px;
       text-align: center;
     }
     h1 {
       color: #00aaff;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+    p {
+      font-size: 13px;
+      color: #c0c0c0;
+      margin-bottom: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      justify-content: center;
+      padding: 10px;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
     }
     .tela-button {
       display: block;
-      margin: 12px auto;
-      padding: 12px 24px;
-      background-color: #00aaff;
+      padding: 10px 0;
+      background-color: #007acc;
       color: white;
       border: none;
       border-radius: 6px;
-      font-size: 16px;
-      width: 90%;
-      max-width: 400px;
+      font-size: 13px;
       text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transition: background-color 0.2s;
     }
     .tela-button:hover {
-      background-color: #008ecc;
+      background-color: #005f99;
     }
     .aviso {
-      background-color: #1e2b38;
-      padding: 12px;
+      background-color: #1f2a35;
+      padding: 10px;
       border-radius: 6px;
-      margin-top: 30px;
-      font-size: 14px;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #cccccc;
+    }
+    .identificar-link {
+      display: block;
+      margin-top: 20px;
+      color: #00aaff;
+      font-size: 13px;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <h1>DTB Manual - R35S / R36S</h1>
-  <p>Baixe manualmente o arquivo de tela compatível com seu console.</p>
+  <p>Escolha abaixo a tela que deseja baixar manualmente.</p>
 
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/TelaOriginal.zip">Baixar - Tela Original</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela1.zip">Baixar - Tela 1</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela2.zip">Baixar - Tela 2</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela3.zip">Baixar - Tela 3</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela4.zip">Baixar - Tela 4</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela460hz.zip">Baixar - Tela 4 - 60Hz</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela5.zip">Baixar - Tela 5</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SH.zip">Baixar - R36H</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/O30S.zip">Baixar - O30S</a>
-  <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/RGB20S.zip">Baixar - RGB20S</a>
+  <div class="grid">
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/TelaOriginal.zip">Tela Original</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela1.zip">Tela 1</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela2.zip">Tela 2</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela3.zip">Tela 3</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela4.zip">Tela 4</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela460hz.zip">Tela 4 - 60Hz</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela5.zip">Tela 5</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SH.zip">R36H</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/O30S.zip">O30S</a>
+    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/RGB20S.zip">RGB20S</a>
+  </div>
 
   <div class="aviso">
     ⚠️ Se ao ligar o console a tela estiver preta ou colorida, desligue mantendo o botão POWER pressionado por 10 segundos antes de remover o cartão. Volte ao PC ou celular e teste outra opção.
   </div>
+
+  <a class="identificar-link" href="https://aeolusux.github.io/ArkOS-R3XS/tools/dtbIdentify.htm" target="_blank">
+    🔍 Deseja identificar sua DTB automaticamente? Clique aqui para usar a ferramenta online.
+  </a>
 </body>
 </html>

@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DTB Manual - Retromax Games</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTB Manual + Identificação - Retromax</title>
   <style>
     body {
-      font-family: "Segoe UI", sans-serif;
       background-color: #0f1117;
       color: #ffffff;
-      padding: 16px;
+      font-family: "Segoe UI", sans-serif;
       text-align: center;
+      padding: 20px;
     }
     h1 {
       color: #00aaff;
-      font-size: 20px;
-      margin-bottom: 6px;
     }
     p {
-      font-size: 13px;
-      color: #c0c0c0;
-      margin-bottom: 16px;
+      font-size: 14px;
+      color: #cccccc;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 10px;
-      justify-content: center;
-      padding: 10px;
       max-width: 600px;
-      margin: 0 auto 20px auto;
+      margin: 20px auto;
     }
     .tela-button {
       display: block;
       padding: 10px 0;
       background-color: #007acc;
       color: white;
-      border: none;
       border-radius: 6px;
       font-size: 13px;
       text-decoration: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       transition: background-color 0.2s;
     }
     .tela-button:hover {
@@ -48,24 +41,50 @@
     }
     .aviso {
       background-color: #1f2a35;
-      padding: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+    .identificar {
+      margin-top: 30px;
+      padding: 12px;
+      background-color: #16202a;
+      border-radius: 8px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+      padding: 8px;
+      background: #202b38;
+      color: white;
+      border: none;
       border-radius: 6px;
-      margin-top: 24px;
-      font-size: 12px;
+    }
+    #resultado {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #00ffcc;
+    }
+    .tutorial {
+      background-color: #1a1f28;
+      border-radius: 6px;
+      padding: 10px;
+      margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      font-size: 13px;
       color: #cccccc;
     }
-    .identificar-link {
-      display: block;
-      margin-top: 20px;
+    .tutorial strong {
       color: #00aaff;
-      font-size: 13px;
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>DTB Manual - R35S / R36S</h1>
-  <p>Escolha abaixo a tela que deseja baixar manualmente.</p>
+  <h1>DTB Manual + Identificação</h1>
+  <p>Escolha uma tela para baixar ou identifique seu arquivo .dtb original abaixo.</p>
 
   <div class="grid">
     <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/TelaOriginal.zip">Tela Original</a>
@@ -80,12 +99,58 @@
     <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/RGB20S.zip">RGB20S</a>
   </div>
 
-  <div class="aviso">
-    ⚠️ Se ao ligar o console a tela estiver preta ou colorida, desligue mantendo o botão POWER pressionado por 10 segundos antes de remover o cartão. Volte ao PC ou celular e teste outra opção.
+  <div class="identificar">
+    <h2>Identificar sua DTB automaticamente</h2>
+    <input type="file" id="fileInput" accept=".dtb">
+    <div id="resultado">Nenhum arquivo carregado.</div>
   </div>
 
-  <a class="identificar-link" href="https://aeolusux.github.io/ArkOS-R3XS/tools/dtbIdentify.htm" target="_blank">
-    🔍 Deseja identificar sua DTB automaticamente? Clique aqui para usar a ferramenta online.
-  </a>
+  <div class="tutorial">
+    <strong>Como identificar sua DTB:</strong>
+    <ol>
+      <li>Localize o arquivo <code>rk3326-r35s-linux.dtb</code> na partição BOOT do seu cartão original.</li>
+      <li>Selecione esse arquivo usando o botão acima.</li>
+      <li>O sistema informará qual tela corresponde ao seu console original.</li>
+      <li>Use o botão correspondente para aplicar a tela correta.</li>
+    </ol>
+    <p><strong>Importante:</strong> Se você possui um clone (como K36S ou R36S Clone) Sinto Muito! Não vai Funcionar, mas coloque sua DTB para Verificar.</p>
+  </div>
+
+  <div class="aviso">
+    ⚠️ Se ao ligar o console a tela estiver preta ou colorida, desligue mantendo o botão POWER pressionado por 10 segundos antes de remover o cartão.
+  </div>
+
+  <script>
+    const HASH_URL = "https://raw.githubusercontent.com/GabrielMaxdeLima/retromax-dtb-files/main/hashes.json";
+    let hashes = {};
+
+    fetch(HASH_URL)
+      .then(response => response.json())
+      .then(data => hashes = data);
+
+    async function sha1(file) {
+      const buffer = await file.arrayBuffer();
+      const hashBuffer = await crypto.subtle.digest('SHA-1', buffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    document.getElementById('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = 'Processando arquivo...';
+
+      const hash = await sha1(file);
+      const identificacao = hashes[hash];
+
+      if (identificacao) {
+        resultado.innerHTML = `✅ DTB identificado: <strong>${identificacao}</strong>`;
+      } else {
+        resultado.innerHTML = `❌ DTB desconhecido. Entre em contato com o suporte da Retromax para adicionar essa tela.`;
+      }
+    });
+  </script>
 </body>
 </html>

@@ -3,158 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DTB Manual + Identificação - Retromax</title>
+  <meta name="theme-color" content="#0f1117">
+  <title>Telas DTB · Retromax</title>
   <style>
+    :root {
+      --bg:        #0f1117;
+      --surface:   #161b24;
+      --surface-2: #1b2230;
+      --border:    #242c3a;
+      --border-hi: #2f92d8;
+      --accent:    #00aaff;
+      --accent-dk: #007acc;
+      --text:      #e9eef5;
+      --muted:     #8b97a8;
+      --warn-bg:   #2a2213;
+      --warn-br:   #5c4a1e;
+      --warn-tx:   #ffcf6b;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      background-color: #0f1117;
-      color: #ffffff;
-      font-family: "Segoe UI", sans-serif;
-      text-align: center;
-      padding: 20px;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+      line-height: 1.5;
+      padding: 28px 16px 48px;
     }
-    h1 {
-      color: #00aaff;
+    .wrap { max-width: 680px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 26px; }
+    .brand {
+      display: inline-block;
+      font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--accent); font-weight: 600; margin-bottom: 8px;
     }
-    p {
-      font-size: 14px;
-      color: #cccccc;
+    h1 { margin: 0 0 6px; font-size: 26px; font-weight: 700; letter-spacing: -.01em; }
+    .sub { margin: 0; color: var(--muted); font-size: 14px; }
+
+    section { margin-top: 26px; }
+    .sec-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--muted); margin: 0 2px 12px;
     }
+    .sec-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: 10px;
-      max-width: 600px;
-      margin: 20px auto;
     }
-    .tela-button {
-      display: block;
-      padding: 10px 0;
-      background-color: #007acc;
-      color: white;
-      border-radius: 6px;
-      font-size: 13px;
+    .tela {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      padding: 13px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
       text-decoration: none;
-      transition: background-color 0.2s;
+      font-size: 14px; font-weight: 600;
+      transition: border-color .15s, background .15s, transform .05s;
     }
-    .tela-button:hover {
-      background-color: #005f99;
+    .tela span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tela svg { flex: none; width: 16px; height: 16px; color: var(--accent); opacity: .85; }
+    .tela:hover { background: var(--surface-2); border-color: var(--border-hi); }
+    .tela:active { transform: translateY(1px); }
+    .tela:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .howto {
+      margin-top: 30px; padding: 16px 18px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
     }
+    .howto h2 { margin: 0 0 10px; font-size: 15px; color: var(--accent); }
+    .howto ol { margin: 0; padding-left: 20px; color: #c6cedb; font-size: 14px; }
+    .howto li { margin: 5px 0; }
+    .howto b { color: var(--text); }
+
     .aviso {
-      background-color: #1f2a35;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 20px;
-      font-size: 13px;
+      margin-top: 16px; padding: 13px 16px;
+      background: var(--warn-bg); border: 1px solid var(--warn-br); border-radius: 10px;
+      color: var(--warn-tx); font-size: 13px; line-height: 1.5;
     }
-    .identificar {
-      margin-top: 30px;
-      padding: 12px;
-      background-color: #16202a;
-      border-radius: 8px;
-    }
-    input[type="file"] {
-      margin-top: 10px;
-      padding: 8px;
-      background: #202b38;
-      color: white;
-      border: none;
-      border-radius: 6px;
-    }
-    #resultado {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #00ffcc;
-    }
-    .tutorial {
-      background-color: #1a1f28;
-      border-radius: 6px;
-      padding: 10px;
-      margin-top: 20px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-      font-size: 13px;
-      color: #cccccc;
-    }
-    .tutorial strong {
-      color: #00aaff;
+
+    footer { margin-top: 34px; text-align: center; color: var(--muted); font-size: 12px; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tela { transition: none; }
     }
   </style>
 </head>
 <body>
-  <h1>DTB Manual + Identificação</h1>
-  <p>Escolha uma tela para baixar ou identifique seu arquivo .dtb original abaixo.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">Retromax</div>
+      <h1>Telas DTB</h1>
+      <p class="sub">Baixe a tela (DTB) do seu R35S / R36S.</p>
+    </header>
 
-  <div class="grid">
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/TelaOriginal.zip">Tela Original</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela1.zip">Tela 1</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela2.zip">Tela 2</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela3.zip">Tela 3</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela4.zip">Tela 4</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela460hz.zip">Tela 4 - 60Hz</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela5.zip">Tela 5</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SH.zip">R36H</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/O30S.zip">O30S</a>
-    <a class="tela-button" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/RGB20S.zip">RGB20S</a>
+    <section>
+      <div class="sec-title">Painéis Oficiais</div>
+      <div class="grid">
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/TelaOriginal.zip"><span>Tela Original</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela1.zip"><span>Tela 1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela2.zip"><span>Tela 2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela3.zip"><span>Tela 3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela4.zip"><span>Tela 4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela460hz.zip"><span>Tela 4 · 60Hz</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela5.zip"><span>Tela 5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/Tela6.zip"><span>Tela 6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-title">Outros Modelos</div>
+      <div class="grid">
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SPlus.zip"><span>R36S Plus</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV03.zip"><span>R36S V03</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV04.zip"><span>R36S V04</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV042538.zip"><span>R36S V04 2538</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV05.zip"><span>R36S V05</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV052601.zip"><span>R36S V05 2601</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV10.zip"><span>R36S V1.0</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV12.zip"><span>R36S V12</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SV22.zip"><span>R36S V22</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36SY3506.zip"><span>R36S Y3506</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/R36H.zip"><span>R36H</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/O30S.zip"><span>O30S</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+        <a class="tela" href="https://github.com/GabrielMaxdeLima/retromax-dtb-mobile/releases/download/telas-v1.0/RGB20S.zip"><span>RGB20S</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+      </div>
+    </section>
+
+    <div class="howto">
+      <h2>Como usar</h2>
+      <ol>
+        <li>Baixe o <b>.zip</b> da tela do seu modelo.</li>
+        <li>Extraia o conteúdo do arquivo.</li>
+        <li>Copie os arquivos para a partição <b>Boot</b> do cartão, substituindo os existentes.</li>
+        <li>Coloque o cartão no console e ligue.</li>
+      </ol>
+    </div>
+
+    <div class="aviso">
+      ⚠️ Se ao ligar o console a tela ficar preta ou colorida, desligue segurando o botão <b>POWER</b> por 10 segundos antes de remover o cartão.
+    </div>
+
+    <footer>
+      Retromax Games · <a href="https://www.youtube.com/@Retromax-Games" target="_blank" rel="noopener">@Retromax-Games</a>
+    </footer>
   </div>
-
-  <div class="identificar">
-    <h2>Identificar sua DTB automaticamente</h2>
-    <input type="file" id="fileInput" accept=".dtb">
-    <div id="resultado">Nenhum arquivo carregado.</div>
-  </div>
-
-  <div class="tutorial">
-    <strong>Como identificar sua DTB:</strong>
-    <ol>
-      <li>Localize o arquivo <code>rk3326-r35s-linux.dtb</code> na partição BOOT do seu cartão original.</li>
-      <li>Selecione esse arquivo usando o botão acima.</li>
-      <li>O sistema informará qual tela corresponde ao seu console original.</li>
-      <li>Use o botão correspondente para aplicar a tela correta.</li>
-    </ol>
-    <p><strong>Importante:</strong> Se você possui um clone (como K36S ou R36S Clone) Sinto Muito! Não vai Funcionar, mas coloque sua DTB para Verificar.</p>
-  </div>
-
-  <div class="aviso">
-    ⚠️ Se ao ligar o console a tela estiver preta ou colorida, desligue mantendo o botão POWER pressionado por 10 segundos antes de remover o cartão.
-  </div>
-
-  <script>
-    const HASH_URL = "https://raw.githubusercontent.com/GabrielMaxdeLima/retromax-dtb-files/main/hashes.json";
-    let hashes = {};
-
-    fetch(HASH_URL)
-      .then(response => response.json())
-      .then(data => hashes = data);
-
-    async function sha1(file) {
-      const buffer = await file.arrayBuffer();
-      const hashBuffer = await crypto.subtle.digest('SHA-1', buffer);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    document.getElementById('fileInput').addEventListener('change', async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const resultado = document.getElementById('resultado');
-      resultado.textContent = 'Processando arquivo...';
-
-      const hash = await sha1(file);
-      const identificacao = hashes[hash];
-
-      if (identificacao) {
-        if (identificacao.includes("Clone") || identificacao.includes("K36S")) {
-          resultado.innerHTML = `⚠️ DTB identificada: <strong>${identificacao}</strong><br>Este modelo é um clone e não é compatível com sistemas oficiais.`;
-        } else {
-          resultado.innerHTML = `✅ DTB identificada: <strong>${identificacao}</strong>`;
-        }
-      } else {
-        resultado.innerHTML = `❌ DTB desconhecido. Entre em contato com o suporte da Retromax para adicionar essa tela.`;
-      }
-    });
-  </script>
 </body>
 </html>

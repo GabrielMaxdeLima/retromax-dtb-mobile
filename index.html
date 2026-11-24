@@ -79,6 +79,18 @@
       color: var(--accent); font-size: 14px; font-weight: 700; text-align: center;
       letter-spacing: .04em; text-transform: uppercase;
     }
+    .sistema small { display: block; margin-top: 2px; font-size: 11px; font-weight: 400; color: var(--muted); text-transform: none; letter-spacing: 0; }
+    .qual {
+      margin-top: 4px; padding: 14px 18px;
+      background: var(--surface); border: 1px solid var(--border-hi); border-radius: 12px;
+      font-size: 14px; color: #c6cedb;
+    }
+    .qual h2 { margin: 0 0 6px; font-size: 15px; color: var(--accent); }
+    .qual p { margin: 6px 0; }
+    .qual ul { margin: 6px 0; padding-left: 20px; }
+    .qual li { margin: 5px 0; }
+    .qual a { color: var(--text); }
+    .qual .obs { color: var(--warn-tx); font-size: 13px; }
     .howto {
       margin-top: 30px; padding: 16px 18px;
       background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
@@ -111,7 +123,17 @@
       <p class="sub">Baixe a tela (DTB) do seu R35S / R36S. Escolha a parte do seu sistema: RetroMax Games (novo) ou ArkOS antigo.</p>
     </header>
 
-    <div class="sistema">RetroMax Games &middot; sistema novo</div>
+    <div class="qual">
+      <h2>Qual é o meu sistema?</h2>
+      <p>Coloque o cartão no celular ou no PC e abra a partição <b>BOOT</b>:</p>
+      <ul>
+        <li>Tem a pasta <b>consoles</b> (e o arquivo <b>retromax.id</b>)? &rarr; <a href="#novo"><b>RetroMax Games · sistema novo</b></a></li>
+        <li>Não tem a pasta <b>consoles</b>? &rarr; <a href="#antigo"><b>ArkOS antigo</b></a></li>
+      </ul>
+      <p class="obs">Os arquivos de um sistema não servem no outro: usar a parte errada deixa a tela preta.</p>
+    </div>
+
+    <div class="sistema" id="novo">RetroMax Games &middot; sistema novo<small>cartão com a pasta consoles na BOOT</small></div>
     <section>
       <div class="sec-title">Placas mais comuns</div>
       <div class="grid">
@@ -269,7 +291,7 @@
         <li>Coloque o cartão no console e ligue.</li>
       </ol>
     </div>
-    <div class="sistema">ArkOS antigo</div>
+    <div class="sistema" id="antigo">ArkOS antigo<small>cartão sem a pasta consoles na BOOT</small></div>
 
     <section>
       <div class="sec-title">Painéis Oficiais</div>
@@ -311,7 +333,7 @@
     </section>
 
     <div class="howto">
-      <h2>Como usar</h2>
+      <h2>Como usar (ArkOS antigo)</h2>
       <ol>
         <li>Baixe o <b>.zip</b> da tela do seu modelo.</li>
         <li>Extraia o conteúdo do arquivo.</li>
